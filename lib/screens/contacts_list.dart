@@ -26,7 +26,7 @@ class _ContactsListState extends State<ContactsList> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Contacts'),
+        title: Text('Contatos'),
       ),
       body: FutureBuilder<List<Contact>>(
           initialData: [],
@@ -127,8 +127,6 @@ class _ContactsListState extends State<ContactsList> {
                         ),
                       ),
                     );
-                    //final Contact? contact = contacts[index];
-                    //return _ContactItem(contact);
                   },
                   itemCount: contacts.length,
                 );

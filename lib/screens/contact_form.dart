@@ -32,6 +32,10 @@ class _ContactFormState extends State<ContactForm> {
 
   Widget build(BuildContext context) {
     if (contact != null) {
+      controller.contactId(contact!.id);
+      controller.controllerAccountNumber.text =
+          contact!.accountNumber.toString();
+      controller.controllerName.text = contact!.name.toString();
       _nameController.text = contact!.name.toString();
       _accountNumberController.text = contact!.accountNumber.toString();
     }
@@ -52,46 +56,24 @@ class _ContactFormState extends State<ContactForm> {
                 children: <Widget>[
                   _buildTextFieldName(controller),
                   _buildTextFieldAccountNumber(controller),
-                  // TextField(
-                  //   controller: _nameController,
-                  //   decoration: InputDecoration(labelText: 'Full name'),
-                  //   style: TextStyle(fontSize: 24),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 8.0),
-                  //   child: TextField(
-                  //     controller: _accountNumberController,
-                  //     decoration: InputDecoration(labelText: 'Account number'),
-                  //     style: TextStyle(fontSize: 24),
-                  //     keyboardType: TextInputType.number,
-                  //   ),
-                  // ),
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: SizedBox(
-                          width: double.maxFinite,
-                          height: 50,
-                          child: ElevatedButton(
-                            key: Key("keySalvarButton"),
-                            child: Text('Create'),
-                            onPressed: () async {
-                              await controller.save().then((saved) {
-                                if (saved) {
-                                  Navigator.pop(context);
-                                }
-                              });
-                            },
-
-                            // onPressed: () {
-                            //   final String name = _nameController.text;
-                            //   final int? accountNumber =
-                            //       int.tryParse(_accountNumberController.text);
-                            //   final Contact newContact = Contact(
-                            //       id: 0, name: name, accountNumber: accountNumber);
-                            //   controller.save().then((id) => Navigator.pop(context));
-                            // },
-                          )),
+                        width: double.maxFinite,
+                        height: 50,
+                        child: ElevatedButton(
+                          key: Key("keySalvarButton"),
+                          child: Text('Salvar'),
+                          onPressed: () async {
+                            await controller.save().then((saved) {
+                              if (saved) {
+                                Navigator.pop(context);
+                              }
+                            });
+                          },
+                        ),
+                      ),
                     ),
                   )
                 ],

@@ -20,18 +20,18 @@ class BytebankApp extends StatelessWidget {
     return MaterialApp(
       theme: tema.copyWith(
         colorScheme: tema.colorScheme
-            .copyWith(primary: Colors.green[900], secondary: Colors.blue[500]),
+            .copyWith(primary: Colors.green[900], secondary: Colors.green[900]),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Colors.blue[500],
+            primary: Colors.green[900],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
           ),
         ),
       ),
-      // home: Dashborad(),
-      home: ContactForm(),
+      home: Dashborad(),
+      //home: ContactForm(),
     );
   }
 }
