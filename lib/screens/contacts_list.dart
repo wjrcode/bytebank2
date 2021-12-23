@@ -94,12 +94,15 @@ class _ContactsListState extends State<ContactsList> {
                                       style: TextStyle(fontSize: 16.0),
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => ContactForm(
-                                              contact: contacts[index]),
-                                        ),
-                                      );
+                                      Navigator.of(context)
+                                          .push(
+                                            MaterialPageRoute(
+                                              builder: (context) => ContactForm(
+                                                contact: contacts[index],
+                                              ),
+                                            ),
+                                          )
+                                          .then((value) => setState(() {}));
                                     },
                                   ),
                                 ),
