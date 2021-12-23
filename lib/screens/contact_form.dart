@@ -41,6 +41,7 @@ class _ContactFormState extends State<ContactForm> {
     }
 
     return Scaffold(
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
           title: Text('Novo Contato'),
         ),
@@ -48,35 +49,37 @@ class _ContactFormState extends State<ContactForm> {
           decoration: BoxDecoration(
             color: Colors.grey[300],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Form(
-              key: controller.formKey,
-              child: Column(
-                children: <Widget>[
-                  _buildTextFieldName(controller),
-                  _buildTextFieldAccountNumber(controller),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: SizedBox(
-                        width: double.maxFinite,
-                        height: 50,
-                        child: ElevatedButton(
-                          key: Key("keySalvarButton"),
-                          child: Text('Salvar'),
-                          onPressed: () async {
-                            await controller.save().then((saved) {
-                              if (saved) {
-                                Navigator.pop(context);
-                              }
-                            });
-                          },
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Form(
+                key: controller.formKey,
+                child: Column(
+                  children: <Widget>[
+                    _buildTextFieldName(controller),
+                    _buildTextFieldAccountNumber(controller),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: SizedBox(
+                          width: double.maxFinite,
+                          height: 50,
+                          child: ElevatedButton(
+                            key: Key("keySalvarButton"),
+                            child: Text('Salvar'),
+                            onPressed: () async {
+                              await controller.save().then((saved) {
+                                if (saved) {
+                                  Navigator.pop(context);
+                                }
+                              });
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

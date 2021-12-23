@@ -10,6 +10,7 @@ class Dashborad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Text('Dashboard'),
       ),
@@ -24,6 +25,7 @@ class Dashborad extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Material(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(
@@ -56,7 +58,7 @@ class Dashborad extends StatelessWidget {
                       children: [
                         Icon(Icons.people, color: Colors.green[900], size: 24),
                         Text(
-                          'Contacts',
+                          'Contatos',
                           style:
                               TextStyle(color: Colors.green[900], fontSize: 16),
                         ),
