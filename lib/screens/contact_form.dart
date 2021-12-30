@@ -43,30 +43,65 @@ class _ContactFormState extends State<ContactForm> {
     return Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
-          title: Text('Novo Contato'),
+          elevation: 0,
+          backgroundColor: null,
+          iconTheme: IconThemeData(
+            color: Colors.green[900],
+          ),
         ),
         body: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-          ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
               child: Form(
                 key: controller.formKey,
                 child: Column(
                   children: <Widget>[
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                        child: Text(
+                          'Novo Contato',
+                          style: TextStyle(
+                              color: Colors.green[900],
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                     _buildTextFieldName(controller),
                     _buildTextFieldAccountNumber(controller),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(5.0, 5.0),
+                                  blurRadius: 15.0,
+                                  spreadRadius: 1),
+                              BoxShadow(
+                                  color: Colors.white,
+                                  offset: Offset(-5.0, -5.0),
+                                  blurRadius: 15.0,
+                                  spreadRadius: 1),
+                            ]),
                         child: SizedBox(
                           width: double.maxFinite,
                           height: 50,
                           child: ElevatedButton(
                             key: Key("keySalvarButton"),
-                            child: Text('Salvar'),
+                            child: Text(
+                              'SALVAR',
+                              style: TextStyle(
+                                  color: Colors.green[900],
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             onPressed: () async {
                               await controller.save().then((saved) {
                                 if (saved) {
@@ -92,19 +127,14 @@ Widget _buildTextFieldName(ContactController controller) {
     padding: const EdgeInsets.all(8.0),
     child: Container(
       decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.black.withOpacity(0.1),
           borderRadius: BorderRadius.all(Radius.circular(20)),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 15.0,
-                spreadRadius: 1),
-            BoxShadow(
-                color: Colors.white,
-                offset: Offset(-5.0, -5.0),
-                blurRadius: 15.0,
-                spreadRadius: 1),
+                color: Colors.grey.shade100,
+                offset: Offset(3, 3),
+                blurRadius: 3,
+                spreadRadius: -3),
           ]),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
@@ -136,19 +166,14 @@ Widget _buildTextFieldAccountNumber(ContactController controller) {
     padding: const EdgeInsets.all(8.0),
     child: Container(
       decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.black.withOpacity(0.1),
           borderRadius: BorderRadius.all(Radius.circular(20)),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 15.0,
-                spreadRadius: 1),
-            BoxShadow(
-                color: Colors.white,
-                offset: Offset(-5.0, -5.0),
-                blurRadius: 15.0,
-                spreadRadius: 1),
+                color: Colors.grey.shade100,
+                offset: Offset(3, 3),
+                blurRadius: 3,
+                spreadRadius: -3),
           ]),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),

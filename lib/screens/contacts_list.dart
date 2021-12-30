@@ -28,64 +28,99 @@ class _ContactsListState extends State<ContactsList> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Transferir'),
+        elevation: 0,
+        backgroundColor: null,
+        iconTheme: IconThemeData(
+          color: Colors.green[900],
+        ),
       ),
-      body: FutureBuilder<List<Contact>>(
-          initialData: [],
-          future: _dao.findAll(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-                break;
-              case ConnectionState.waiting:
-                return Progress();
-                break;
-              case ConnectionState.active:
-                break;
-              case ConnectionState.done:
-                final List<Contact?> contacts = snapshot.data as List<Contact?>;
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                child: Text(
+                  'Contatos',
+                  style: TextStyle(
+                      color: Colors.green[900],
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder<List<Contact>>(
+                  initialData: [],
+                  future: _dao.findAll(),
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.none:
+                        break;
+                      case ConnectionState.waiting:
+                        return Progress();
+                        break;
+                      case ConnectionState.active:
+                        break;
+                      case ConnectionState.done:
+                        final List<Contact?> contacts =
+                            snapshot.data as List<Contact?>;
 
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    final Contact? contact = contacts[index];
-                    return cartItem(
-                      title: contacts[index]!.name.toString(),
-                      subtitle: contacts[index]!.accountNumber.toString(),
-                      id: contacts[index]!.id,
-                      edit: () {
-                        Navigator.of(context)
-                            .push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ContactForm(contact: contacts[index]),
-                              ),
-                            )
-                            .then((value) => setState(() {}));
-                        ;
-                      },
-                      delete: () async {
-                        controller.contactId(contacts[index]!.id);
-                        await controller.delete();
+                        return ListView.builder(
+                          itemBuilder: (context, index) {
+                            final Contact? contact = contacts[index];
+                            return cartItem(
+                              title: contacts[index]!.name.toString(),
+                              subtitle:
+                                  contacts[index]!.accountNumber.toString(),
+                              id: contacts[index]!.id,
+                              edit: () {
+                                Navigator.of(context)
+                                    .push(
+                                      MaterialPageRoute(
+                                        builder: (context) => ContactForm(
+                                            contact: contacts[index]),
+                                      ),
+                                    )
+                                    .then((value) => setState(() {}));
+                                ;
+                              },
+                              delete: () async {
+                                controller.contactId(contacts[index]!.id);
+                                await controller.delete();
 
-                        setState(() {});
-                      },
-                      action: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => TransactionForm(contact),
-                          ),
+                                setState(() {});
+                              },
+                              action: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        TransactionForm(contact),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          itemCount: contacts.length,
                         );
-                      },
-                    );
-                  },
-                  itemCount: contacts.length,
-                );
-                break;
-            }
+                        break;
+                    }
 
-            return Text('Unknown error');
-          }),
+                    return Text('Unknown error');
+                  }),
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
         onPressed: () => Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => ContactForm()))
             .then((value) => setState(() {})),

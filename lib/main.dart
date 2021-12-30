@@ -22,10 +22,10 @@ class BytebankApp extends StatelessWidget {
     return MaterialApp(
       theme: tema.copyWith(
         colorScheme: tema.colorScheme
-            .copyWith(primary: Colors.green[900], secondary: Colors.green[900]),
+            .copyWith(primary: Colors.grey[300], secondary: Colors.green[900]),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Colors.green[900],
+            primary: Colors.grey[300],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),

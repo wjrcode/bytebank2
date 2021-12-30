@@ -12,7 +12,11 @@ class TransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transações'),
+        elevation: 0,
+        backgroundColor: null,
+        iconTheme: IconThemeData(
+          color: Colors.green[900],
+        ),
       ),
       body: FutureBuilder<List<Transaction>?>(
           future: _webClient.findAll(),

@@ -13,7 +13,11 @@ class Dashborad extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Dashboard'),
+        elevation: 0,
+        backgroundColor: null,
+        iconTheme: IconThemeData(
+          color: Colors.green[900],
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
