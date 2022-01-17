@@ -20,6 +20,6 @@ class Transaction {
 
   @override
   String toString() {
-    return 'Transaction{value: $value, contact: $contact}';
+    return 'Transaction{value: $value, contato: $contact}';
   }
 }
