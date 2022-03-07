@@ -35,18 +35,29 @@ class Dashborad extends StatelessWidget {
                   name: 'Transferir',
                   icon: Icons.monetization_on,
                   onClick: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ContactsList())),
+                    MaterialPageRoute(
+                      builder: (context) => ContactsList(),
+                    ),
+                  ),
                 ),
                 _FeatureItem(
-                    name: 'Histórico',
-                    icon: Icons.watch_later,
-                    onClick: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => TransactionsList()))),
+                  name: 'Histórico',
+                  icon: Icons.watch_later,
+                  onClick: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => TransactionsList(),
+                    ),
+                  ),
+                ),
                 _FeatureItem(
-                    name: 'Histórico',
-                    icon: Icons.watch_later,
-                    onClick: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ContactsList()))),
+                  name: 'Histórico',
+                  icon: Icons.watch_later,
+                  onClick: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ContactsList(),
+                    ),
+                  ),
+                ),
               ],
             ),
           )
@@ -86,15 +97,17 @@ class _FeatureItem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(5.0, 5.0),
-                      blurRadius: 15.0,
-                      spreadRadius: 1),
+                    color: Colors.grey,
+                    offset: Offset(5.0, 5.0),
+                    blurRadius: 15.0,
+                    spreadRadius: 1,
+                  ),
                   BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-5.0, -5.0),
-                      blurRadius: 15.0,
-                      spreadRadius: 1),
+                    color: Colors.white,
+                    offset: Offset(-5.0, -5.0),
+                    blurRadius: 15.0,
+                    spreadRadius: 1,
+                  ),
                 ]),
             padding: const EdgeInsets.all(8.0),
             height: 100,
